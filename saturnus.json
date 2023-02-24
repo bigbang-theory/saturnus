@@ -1,0 +1,3236 @@
+{
+  "uuid": "260083be-0c4e-46fe-9a3d-f423c5649149",
+  "lastMigration": 25,
+  "name": "Saturnus",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 5001,
+  "hostname": "127.0.0.1",
+  "folders": [
+    {
+      "uuid": "5797960c-3ae2-48cb-b85c-c7d653c7060d",
+      "name": "users",
+      "collapsed": true,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "cd26f091-ed77-4a8b-a4eb-1368aeb8bf54"
+        },
+        {
+          "type": "route",
+          "uuid": "4c7ad44e-399a-44b2-b51b-fe217ca588d2"
+        },
+        {
+          "type": "route",
+          "uuid": "39f74647-016b-4b41-91c2-22729865889f"
+        },
+        {
+          "type": "route",
+          "uuid": "65a27df4-ab18-4513-8ee6-26ac009a7a6c"
+        },
+        {
+          "type": "route",
+          "uuid": "c44ff4bd-f13b-4f10-9ec9-906f4fea96a3"
+        },
+        {
+          "type": "route",
+          "uuid": "805eb3cb-f1d9-4de3-9434-c72cd81caeb4"
+        },
+        {
+          "type": "route",
+          "uuid": "c78683ad-6bab-479c-9bb3-efe936fc28f1"
+        },
+        {
+          "type": "route",
+          "uuid": "eb0a9436-2d4a-45f3-9622-6abfbad31ddd"
+        },
+        {
+          "type": "route",
+          "uuid": "1bf26e6c-4c79-4b42-a9b6-8dd1be962dda"
+        },
+        {
+          "type": "route",
+          "uuid": "90fefc8f-05ae-4b8c-b6f2-ad908aae078a"
+        },
+        {
+          "type": "route",
+          "uuid": "91c86579-09e4-43f3-8012-54ded1290ac7"
+        },
+        {
+          "type": "route",
+          "uuid": "9d6d6863-ed8f-4404-bc1a-f6193be9dbc3"
+        },
+        {
+          "type": "route",
+          "uuid": "00b3e027-b8fd-48e7-a88f-5cc2426c6aa3"
+        },
+        {
+          "type": "route",
+          "uuid": "76815080-154f-44ad-bde6-652fa6eb8fd9"
+        },
+        {
+          "type": "route",
+          "uuid": "7b8d92e2-6e4b-4781-a702-57592639a947"
+        },
+        {
+          "type": "route",
+          "uuid": "a23a8c2c-ee40-4744-931f-d6cc0b8e3903"
+        },
+        {
+          "type": "route",
+          "uuid": "6a8e3d7b-803d-4034-80d1-db253ccb6944"
+        },
+        {
+          "type": "route",
+          "uuid": "bdd1e60c-c029-445b-937f-629a2a27d64c"
+        },
+        {
+          "type": "route",
+          "uuid": "546ef68c-36cd-4b6f-aefd-efc9aa9eb754"
+        },
+        {
+          "type": "route",
+          "uuid": "ede14611-e69d-46d3-bb4e-1089fd7bd842"
+        },
+        {
+          "type": "route",
+          "uuid": "a86d0606-9bad-4d11-9f5d-cc03315076d6"
+        },
+        {
+          "type": "route",
+          "uuid": "7602106b-bdaf-4467-b745-26c1da2027ac"
+        },
+        {
+          "type": "route",
+          "uuid": "e3f77b52-1fba-4a3f-940a-b22483937b80"
+        },
+        {
+          "type": "route",
+          "uuid": "a4f99fb8-ad36-4454-a4ee-e0d1d3fdb14a"
+        }
+      ]
+    },
+    {
+      "uuid": "bbb12186-6b5d-4c48-a87d-3b122be161a2",
+      "name": "payments",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "c0772a36-b05e-4ff2-a269-3a4beb750cc4"
+        },
+        {
+          "type": "route",
+          "uuid": "a0cca189-5c0e-4707-afbd-dc0e668f220c"
+        },
+        {
+          "type": "route",
+          "uuid": "777f797d-5d05-4c1a-ad2b-089298b582f1"
+        },
+        {
+          "type": "route",
+          "uuid": "0a4d5723-b8ee-4179-9dc8-311a4b19843b"
+        },
+        {
+          "type": "route",
+          "uuid": "77fef451-0143-4202-9395-028732691fab"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "cd26f091-ed77-4a8b-a4eb-1368aeb8bf54",
+      "documentation": "Get All Users",
+      "method": "get",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "b42c12b8-6cb6-4eaf-9499-ef465caa872b",
+          "body": "{\n  \"error\": null,\n  \"data\": [\n    {{# repeat (queryParam 'total' '5') }}\n    {\n      \"user_id\": \"{{ faker 'datatype.uuid' }}\",\n      \"username\": \"{{ faker 'internet.userName' }}\",\n      \"first_name\": \"{{ faker 'name.firstName' }}\",\n      \"last_name\": \"{{ faker 'name.lastName' }}\",\n      \"email\": \"{{ faker 'internet.email' }}\",\n      \"addresses\": [\n        {{# repeat (queryParam 'total' '3') }}\n        {\n          \"address_id\": \"{{ faker 'datatype.uuid' }}\",\n          \"address\": \"{{ faker 'address.streetAddress' }}\",\n          \"city\": \"{{ faker 'address.city' }}\",\n          \"state\": \"{{ faker 'address.state' }}\",\n          \"country\": \"{{ faker 'address.country' }}\",\n          \"post_code\": \"{{ faker 'address.zipCode' }}\",\n          \"created_at\": \"{{ faker 'datatype.datetime' }}\",\n          \"updated_at\": \"{{ faker 'datatype.datetime' }}\"\n        }\n        {{/ repeat }}\n        ],\n      \"role\": {\n        \"role_id\": \"USER\",\n        \"name\": \"User\"\n      },\n    }\n    {{/ repeat }}\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Request Success",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4933b325-b79d-48c0-87b2-a664967ae78d",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengakses halaman ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5c75141b-5791-405f-a993-eb8f4ee043cc",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "65a27df4-ab18-4513-8ee6-26ac009a7a6c",
+      "documentation": "Create User",
+      "method": "post",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "f3a1fefd-6c10-4962-9025-b2836c3d68dd",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ faker 'datatype.uuid' }}\",\n    \"username\": \"username\",\n    \"first_name\": \"User Name\",\n    \"last_name\": \"Last Name\",\n    \"email\": \"username@gmail.com\",\n    \"phone\": \"628516324672\",\n    \"addresses\": [],\n    \"role\": {\n      \"role_id\": \"USER\",\n      \"name\": \"User\"\n      },\n    \"created_at\": \"{{ faker 'datatype.datetime' }}\",\n    \"updated_at\": \"{{ faker 'datatype.datetime' }}\"\n    }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "User Created",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e00198c3-db88-44e4-a847-63d837b6a55d",
+          "body": "{\n  \"error\": {\n    \"message\": \"Format tidak sesuai.\",\n    \"fields\": [\n      {\n        \"field\": \"username\",\n        \"message\": \"Username lebih dari 8\"\n      },\n      {\n        \"field\": \"password\",\n        \"message\": \"Password harus kombinasi huruf, angka, karakter\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "username",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "first_name",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "last_name",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c44ff4bd-f13b-4f10-9ec9-906f4fea96a3",
+      "documentation": "Get Single User",
+      "method": "get",
+      "endpoint": "users/:user_id",
+      "responses": [
+        {
+          "uuid": "76adb941-1da0-439b-a9f1-d5a69095e584",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"username\": \"username\",\n    \"first_name\": \"User Name\",\n    \"last_name\": \"Last Name\",\n    \"email\": \"username@gmail.com\",\n    \"phone\": \"628516324672\",\n    \"addresses\": [],\n    \"role\": {\n      \"role_id\": \"USER\",\n      \"name\": \"User\"\n      },\n    \"created_at\": \"{{ faker 'datatype.datetime' }}\",\n    \"updated_at\": \"{{ faker 'datatype.datetime' }}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7c64bb3f-359d-4efb-bdff-9cecd15c5bd7",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "22471b40-73c0-4e37-a418-9cea42fbecd8",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "66e199d5-3528-4b2b-a4dd-4c7d517d3112",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengakses user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "805eb3cb-f1d9-4de3-9434-c72cd81caeb4",
+      "documentation": "Update User",
+      "method": "patch",
+      "endpoint": "users/:user_id",
+      "responses": [
+        {
+          "uuid": "239159e8-51e9-4366-91be-1078073ab71b",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"username\": \"username\",\n    \"first_name\": \"User Name\",\n    \"last_name\": \"Last Name\",\n    \"email\": \"username@gmail.com\",\n    \"phone\": \"628516324672\",\n    \"addresses\": [],\n    \"role\": {\n      \"role_id\": \"USER\",\n      \"name\": \"User\"\n      },\n    \"created_at\": \"{{ faker 'datatype.datetime' }}\",\n    \"updated_at\": \"{{ faker 'datatype.datetime' }}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User Updated",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "fb6e68ca-9a58-4c4c-86fe-6a924cbf0396",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "95b23ef3-b8fc-4a68-ab89-5b652d7bbd3f",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "ba95e05a-2db7-4220-9c0f-71f79e9cbc89",
+          "body": "{\n  \"error\": {\n    \"message\": \"Format tidak sesuai\",\n    \"fields\": [\n      {\n        \"message\": \"Nomor telepon tidak valid.\",\n        \"field\": \"phone\"\n      },\n      {\n        \"message\": \"Email tidak valid.\",\n        \"field\": \"email\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "username",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "first_name",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "last_name",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "phone",
+              "value": "[0-9]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9aeeb789-bbc8-49d3-a90e-d87bf711f12d",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengubah data.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "eb0a9436-2d4a-45f3-9622-6abfbad31ddd",
+      "documentation": "Get User Role",
+      "method": "get",
+      "endpoint": "users/:user_id/role",
+      "responses": [
+        {
+          "uuid": "46ffffe5-f729-45f6-915c-2c7de27c2150",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"role\": {\n      \"role_id\": \"USER\",\n      \"name\": \"User\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User Role",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5c13dcf8-129e-48c1-8d87-d9e1bd8ecd06",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e144478f-92f9-4a7c-a7e4-483d81485a6d",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d5c1b6a8-7c58-4830-98ae-8255bc89fbcb",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengakses role user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "90fefc8f-05ae-4b8c-b6f2-ad908aae078a",
+      "documentation": "Get User Addresses",
+      "method": "get",
+      "endpoint": "users/:user_id/addresses",
+      "responses": [
+        {
+          "uuid": "86f9cbf7-0122-4df7-ab91-291ddd53fcf5",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"addresses\": [\n      {{# repeat (queryParam 'total' '3') }}\n      {\n        \"address_id\": \"{{ faker 'datatype.uuid' }}\",\n        \"address\": \"{{ faker 'address.streetAddress' }}\",\n        \"city\": \"{{ faker 'address.city' }}\",\n        \"state\": \"{{ faker 'address.state' }}\",\n        \"country\": \"{{ faker 'address.country' }}\",\n        \"post_code\": \"{{ faker 'address.zipCode' }}\",\n        \"created_at\": \"{{ faker 'datatype.datetime' }}\",\n        \"updated_at\": \"{{ faker 'datatype.datetime' }}\"\n      }\n      {{/ repeat }}\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User Addresses",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c6d863a1-135f-4683-a9a8-357c06be4a41",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengakses alamat user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bb6787f0-35f0-4330-8e1e-6fd057ac24e9",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "284e94f6-27b2-40b2-8cbb-3f60bc36b0a2",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1bf26e6c-4c79-4b42-a9b6-8dd1be962dda",
+      "documentation": "Change User Role",
+      "method": "patch",
+      "endpoint": "users/:user_id/role",
+      "responses": [
+        {
+          "uuid": "6a88c764-a9a4-4c5e-841a-01dda94228ef",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"role\": {\n      \"role_id\": \"SELLER\",\n      \"name\": \"Seller\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Role Changed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dee62b9b-ce83-4179-b1f6-41262c9c6db9",
+          "body": "{\n  \"error\": {\n    \"message\": \"Role harus dipilih.\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "user_id",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "role_id",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c9129b63-88c4-4d08-bbe9-43c53e9792b1",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a63a31b0-bbef-465d-b77c-712f6321b7f0",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "478c6a4e-9821-4ffc-a7dc-53fb42ac8c1b",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengubah role user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c78683ad-6bab-479c-9bb3-efe936fc28f1",
+      "documentation": "Delete User",
+      "method": "delete",
+      "endpoint": "users/:user_id",
+      "responses": [
+        {
+          "uuid": "200a25d5-ed1d-40f0-a067-a0eca52c3047",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User Deleted",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5afcbf28-d97f-49a7-a3e2-1356010d00e3",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk menghapus user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0d6bc862-e4a7-44fb-a217-68eba35e9c2e",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5aed7353-7a93-4162-919b-fcb9761fe385",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "76815080-154f-44ad-bde6-652fa6eb8fd9",
+      "documentation": "Create User Address",
+      "method": "post",
+      "endpoint": "users/:user_id/addresses",
+      "responses": [
+        {
+          "uuid": "dc399f84-6ca3-4ae8-8d12-21c4f66beba6",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"address\": \n      {\n        \"address_id\": \"{{ faker 'datatype.uuid' }}\",\n        \"address\": \"{{ faker 'address.streetAddress' }}\",\n        \"city\": \"{{ faker 'address.city' }}\",\n        \"state\": \"{{ faker 'address.state' }}\",\n        \"country\": \"{{ faker 'address.country' }}\",\n        \"post_code\": \"{{ faker 'address.zipCode' }}\",\n        \"created_at\": \"{{ faker 'datatype.datetime' }}\",\n        \"updated_at\": \"{{ faker 'datatype.datetime' }}\"\n      }\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Address Created",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "0922eb95-a442-415e-8df8-bc22ddd85e47",
+          "body": "{\n  \"error\": {\n    \"message\": \"Format tidak sesuai.\",\n    \"fields\": [\n      {\n        \"message\": \"Alamat harus diisi.\",\n        \"field\": \"address\"\n      },\n      {\n        \"message\": \"Kota harus diisi.\",\n        \"field\": \"city\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "address",
+              "value": "[a-zA-z0-9]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "city",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "state",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "country",
+              "value": "[a-zA-z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "post_code",
+              "value": "[0-9]",
+              "invert": true,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2b06ee8f-3164-4c8c-8886-a48608e7bd29",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk menambahkan alamat user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "145f119b-32a0-4e3a-b0d7-9d4f02b846dc",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "792f9212-7ae5-4d21-acb3-bcc8e1b95764",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "91c86579-09e4-43f3-8012-54ded1290ac7",
+      "documentation": "Get User Address",
+      "method": "get",
+      "endpoint": "users/:user_id/address/:address_id",
+      "responses": [
+        {
+          "uuid": "196301a5-703e-4319-bcd1-2e96c82c8870",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"address\": {\n      \"address_id\": \"{{ urlParam 'address_id' }}\",\n      \"address\": \"{{ faker 'address.streetAddress' }}\",\n      \"city\": \"{{ faker 'address.city' }}\",\n      \"state\": \"{{ faker 'address.state' }}\",\n      \"country\": \"{{ faker 'address.country' }}\",\n      \"post_code\": \"{{ faker 'address.zipCode' }}\",\n      \"created_at\": \"{{ faker 'datatype.datetime' }}\",\n      \"updated_at\": \"{{ faker 'datatype.datetime' }}\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User Address",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c1ec0212-439c-42ac-a5bf-28e73027e643",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengakses alamat user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a37f6dac-921c-40f5-8a8a-eb72b6868029",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8dedc2d0-e6a2-4f4b-930d-050e4d9d1a71",
+          "body": "{\n  \"error\": {\n    \"message\": \"{User|Alamat} tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User or Address Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7b8d92e2-6e4b-4781-a702-57592639a947",
+      "documentation": "Get User Carts",
+      "method": "get",
+      "endpoint": "users/:user_id/carts",
+      "responses": [
+        {
+          "uuid": "e3c0868d-cfb8-4b4b-a11a-0649e4fa3286",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"carts\": [\n      {\n        \"product_id\": \"{{ faker 'datatype.uuid' }}\",\n        \"quantity\": 4\n      },\n      {\n        \"product_id\": \"{{ faker 'datatype.uuid' }}\",\n        \"quantity\": 4\n      },\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User Carts",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8cb28045-81cb-463c-a265-f657f3b1beb3",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengakses keranjang user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "364cedff-3895-408e-9eda-9be5d30bf564",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "251b16c1-d92d-4aba-af64-eacd62ef5094",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a23a8c2c-ee40-4744-931f-d6cc0b8e3903",
+      "documentation": "Get User Cart",
+      "method": "get",
+      "endpoint": "users/:user_id/carts/:product_id",
+      "responses": [
+        {
+          "uuid": "b01aca07-85c2-437a-b2b0-3a125769dc7d",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"cart\": {\n      \"product_id\": \"{{ urlParam 'product_id' }}\",\n      \"quantity\": 4\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User Cart",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "757920d3-c8de-4825-91e9-c41b21bf898b",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengakses keranjang user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "14f0889d-a570-420b-adda-fa897d065b8c",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b73b9dff-0daf-4823-a0a1-44b0cea4e1e2",
+          "body": "{\n  \"error\": {\n    \"message\": \"{User|Produk} tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Cart Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9d6d6863-ed8f-4404-bc1a-f6193be9dbc3",
+      "documentation": "Change User Address",
+      "method": "patch",
+      "endpoint": "users/:user_id/address/:address_id",
+      "responses": [
+        {
+          "uuid": "b983d36b-87f2-4e8f-87bc-0be5c73b74f9",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"address\": {\n      \"address_id\": \"{{ faker 'datatype.uuid' }}\",\n      \"address\": \"{{ faker 'address.streetAddress' }}\",\n      \"city\": \"{{ faker 'address.city' }}\",\n      \"state\": \"{{ faker 'address.state' }}\",\n      \"country\": \"{{ faker 'address.country' }}\",\n      \"post_code\": \"{{ faker 'address.zipCode' }}\",\n      \"created_at\": \"{{ faker 'datatype.datetime' }}\",\n      \"updated_at\": \"{{ faker 'datatype.datetime' }}\"\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Address Changed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "259629d6-6ca2-4950-94f3-174cc6dc36b6",
+          "body": "{\n  \"error\": {\n    \"message\": \"Format tidak sesuai.\",\n    \"fields\": [\n      {\n        \"message\": \"Alamat harus diisi.\",\n        \"field\": \"address\"\n      },\n      {\n        \"message\": \"Kota harus diisi.\",\n        \"field\": \"city\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "address",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "city",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "state",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "country",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "post_code",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d65996dc-23c8-4e4f-bb04-5b461fd09192",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengubah alamat user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "37eb4e32-709f-4471-8dbf-1daa51d0752c",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f5333766-bc8c-4fdc-aaf5-6a402752ef65",
+          "body": "{\n  \"error\": {\n    \"message\": \"Alamat tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Address Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "6a8e3d7b-803d-4034-80d1-db253ccb6944",
+      "documentation": "Update User Cart",
+      "method": "patch",
+      "endpoint": "users/:user_id/carts/:product_id",
+      "responses": [
+        {
+          "uuid": "6bea6501-2636-4fe7-8575-c80dfdf52c80",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"cart\": {\n      \"product_id\": \"{{ urlParam 'product_id' }}\",\n      \"quantity\": 5\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Cart Changed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a4b5c798-c098-4ff9-8bfa-b1a9666f22a7",
+          "body": "{\n  \"error\": {\n    \"message\": \"Format tidak sesuai.\",\n    \"fields\": [\n      {\n        \"message\": \"Jumlah barang minimal 1.\",\n        \"field\": \"quantity\"\n      },\n      {\n        \"message\": \"Produk harus dipilih.\",\n        \"field\": \"product_id\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "product_id",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "quantity",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "quantity",
+              "value": "[0-9]",
+              "invert": true,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f9bdfa81-5842-4f26-861e-4473feb2ebde",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengubah keranjang user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "601ca7fe-e109-4a06-8f58-f452d7cb0137",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "39d47ab0-86d9-46ad-9a94-c966eb75326b",
+          "body": "{\n  \"error\": {\n    \"message\": \"{User|Produk} tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Cart Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "546ef68c-36cd-4b6f-aefd-efc9aa9eb754",
+      "documentation": "Create User Cart",
+      "method": "post",
+      "endpoint": "users/:user_id/carts",
+      "responses": [
+        {
+          "uuid": "47d660c8-3897-4224-87f6-2eb4175d0dd1",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"cart\": {\n      \"product_id\": \"{{ faker 'datatype.uuid' }}\",\n      \"quantity\": 4\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Cart Created",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5ed6dc63-7692-4729-8151-95d3241411b1",
+          "body": "{\n  \"error\": {\n    \"message\": \"Format tidak sesuai.\",\n    \"fields\": [\n      {\n        \"message\": \"Jumlah barang minimal 1.\",\n        \"field\": \"quantity\"\n      },\n      {\n        \"message\": \"Produk harus dipilih.\",\n        \"field\": \"product_id\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "product_id",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "quantity",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "quantity",
+              "value": "[0-9]",
+              "invert": true,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "91d139af-532a-4481-b7b0-b8ad4a1e59c1",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk menambahkan keranjang user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cc209422-82df-45ec-ab13-ae103c9dc2ef",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d1046c48-3aa8-4aa6-8a4c-44e09dac9f0c",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4c7ad44e-399a-44b2-b51b-fe217ca588d2",
+      "documentation": "Login User",
+      "method": "post",
+      "endpoint": "users/login",
+      "responses": [
+        {
+          "uuid": "124b860c-c75e-4bba-a491-997e2d724f17",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ faker 'datatype.uuid' }}\",\n    \"access_token\": \"5f4dcc3b5aa765d61d8327deb882cf99\",\n    \"expired_at\": \"{{ faker 'datatype.datetime' }}\"\n    }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Login Success",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "081d1c4d-0cf8-45a0-8336-4b8e1937fffb",
+          "body": "{\n  \"error\": {\n    \"message\": \"empty fields\",\n    \"fields\": [\n      {\n        \"field\": \"username\",\n        \"message\": \"Username tidak boleh kosong\"\n      },\n      {\n        \"field\": \"password\",\n        \"message\": \"Password tidak boleh kosong\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Request Body Empty",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "username",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "39f74647-016b-4b41-91c2-22729865889f",
+      "documentation": "Forget Password User",
+      "method": "post",
+      "endpoint": "users/forget-password",
+      "responses": [
+        {
+          "uuid": "9c0cb658-033c-4ece-89e5-f098a7dadcdd",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ faker 'datatype.uuid' }}\",\n    }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Success",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "45477071-ec8e-4ead-b667-36a7cffcdfb0",
+          "body": "{\n  \"error\": {\n    \"message\": \"empty fields\",\n    \"fields\": [\n      {\n        \"field\": \"username\",\n        \"message\": \"Username tidak boleh kosong\"\n      },\n      {\n        \"field\": \"email\",\n        \"message\": \"Email tidak boleh kosong\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "username",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "first_name",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "last_name",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "phone",
+              "value": "[0-9]",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ede14611-e69d-46d3-bb4e-1089fd7bd842",
+      "documentation": "Get User Payments",
+      "method": "get",
+      "endpoint": "users/:user_id/payments",
+      "responses": [
+        {
+          "uuid": "7d896266-5b94-4eec-9941-c5f4858be75b",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"payments\": [\n      {\n        \"user_payment_id\": \"{{ faker 'datatype.uuid' }}\",\n        \"payment\": {\n          \"payment_id\": \"BCA\",\n          \"name\": \"Bank Central Asia\",\n          \"type\": \"bank\"\n        },\n        \"account_number\": \"87287381782738\",\n        \"account_name\": \"User Name\"\n      },\n      {\n        \"user_payment_id\": \"{{ faker 'datatype.uuid' }}\",\n        \"payment\": {\n          \"payment_id\": \"OVO\",\n          \"name\": \"OVO\",\n          \"type\": \"ewallet\"\n        },\n        \"account_number\": \"628949982983928\",\n        \"account_name\": \"User Name\"\n      },\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User Payments",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "11fd96c1-d77f-478e-a2e7-a7406c1127d2",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengakses payment user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4b232fcc-80de-44c8-96d2-957f85eb4dd8",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "aeff1b76-4a30-4961-b699-1cefc61e33d2",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a86d0606-9bad-4d11-9f5d-cc03315076d6",
+      "documentation": "Get User Payment",
+      "method": "get",
+      "endpoint": "users/:user_id/payments/:user_payment_id",
+      "responses": [
+        {
+          "uuid": "591a3057-d814-47ce-9f20-d0039fd93a28",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"payment\": {\n      \"user_payment_id\": \"{{ urlParam 'user_payment_id' }}\",\n      \"payment\": {\n        \"payment_id\": \"BCA\",\n        \"name\": \"Bank Central Asia\",\n        \"type\": \"bank\"\n      },\n    \"account_number\": \"87287381782738\",\n    \"account_name\": \"User Name\"\n    },\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User Payment",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1600d620-95e9-4115-a636-8665687a6223",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengakses payment user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "cc131fb4-587a-48ee-aa36-4ceecee9e4af",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5c47c4f4-cd50-48cc-ad7a-8236a0e5ad61",
+          "body": "{\n  \"error\": {\n    \"message\": \"{User|Payment} tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User or Payment Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "00b3e027-b8fd-48e7-a88f-5cc2426c6aa3",
+      "documentation": "Delete User Address",
+      "method": "delete",
+      "endpoint": "users/:user_id/addresses/:address_id",
+      "responses": [
+        {
+          "uuid": "cf5d4d2f-4cde-4f69-a617-7cf12c2a71df",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"address\": {\n      \"address_id\": \"{{ urlParam 'address_id' }}\",\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Address Deleted",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ff539f6b-da94-4bf1-a95b-bfdc9bf99f13",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk menghapus alamat user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9d0c7635-f25d-4f05-b599-bf5a95b50ba5",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f3656bb4-4ccb-4878-9711-ee067dd9fe6e",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bdd1e60c-c029-445b-937f-629a2a27d64c",
+      "documentation": "Delete User Cart",
+      "method": "delete",
+      "endpoint": "users/:user_id/carts/:product_id",
+      "responses": [
+        {
+          "uuid": "0ded5035-8e7b-4d10-92f3-bef2ce39e3be",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"cart\": {\n      \"product_id\": \"{{ urlParam 'product_id' }}\",\n    }\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Cart Deleted",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b82fd23c-7cb0-4b9c-84b8-35f6560dab5d",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengubah keranjang user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "bce5d316-e74a-4717-87f3-0bacb0c431f0",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "df10c8fd-77bf-44b0-82f2-6b3ea11b4a79",
+          "body": "{\n  \"error\": {\n    \"message\": \"{User|Produk} tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Cart Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7602106b-bdaf-4467-b745-26c1da2027ac",
+      "documentation": "Create User Payments",
+      "method": "post",
+      "endpoint": "users/:user_id/payments",
+      "responses": [
+        {
+          "uuid": "17850e49-1718-4118-9641-dd29141bc64e",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"payment\": {\n      \"user_payment_id\": \"{{ faker 'datatype.uuid' }}\",\n      \"payment\": {\n        \"payment_id\": \"BCA\",\n        \"name\": \"Bank Central Asia\",\n        \"type\": \"bank\"\n      },\n      \"account_number\": \"87287381782738\",\n      \"account_name\": \"User Name\"\n    },\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Payment Created",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "383de873-beef-4aae-8254-7fa00339a93a",
+          "body": "{\n  \"error\": {\n    \"message\": \"Kolom harus diisi.\",\n    \"fields\": [\n      {\n        \"message\": \"Jenis pembayaran harus dipilih.\",\n        \"field\": \"payment_id\"\n      },\n      {\n        \"message\": \"Nomor akun harus diisi.\",\n        \"field\": \"account_number\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "payment_id",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "account_number",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "account_name",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2a5b17be-a5fa-45b6-832b-010d4fa20f21",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengakses payment user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c5e500ed-0bb7-49ac-86f6-85a246dab497",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2b04a027-9d3f-49da-8186-96e2702bfc33",
+          "body": "{\n  \"error\": {\n    \"message\": \"User tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "e3f77b52-1fba-4a3f-940a-b22483937b80",
+      "documentation": "Update User Payment",
+      "method": "patch",
+      "endpoint": "users/:user_id/payments/:user_payment_id",
+      "responses": [
+        {
+          "uuid": "5afe7b15-0203-4e59-b198-e5bbdd11f49e",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"payment\": {\n      \"user_payment_id\": \"{{ urlParam 'user_payment_id' }}\",\n      \"payment\": {\n        \"payment_id\": \"BCA\",\n        \"name\": \"Bank Central Asia\",\n        \"type\": \"bank\"\n      },\n      \"account_number\": \"87287381782738\",\n      \"account_name\": \"User Name\"\n    },\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Payment Updated",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "43428009-8b9a-4fd6-a2f3-81e2338403d2",
+          "body": "{\n  \"error\": {\n    \"message\": \"Kolom harus diisi.\",\n    \"fields\": [\n      {\n        \"message\": \"Jenis pembayaran harus dipilih.\",\n        \"field\": \"payment_id\"\n      },\n      {\n        \"message\": \"Nomor akun harus diisi.\",\n        \"field\": \"account_number\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "payment_id",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "account_number",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "account_name",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "f1dd479a-0dc5-452c-9728-d6362be9ee27",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk mengubah payment user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "a69bc28a-5f38-4406-aca7-0846d2755bd1",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "b7ff94cd-2124-431b-a7d7-b520bdc666a1",
+          "body": "{\n  \"error\": {\n    \"message\": \"{User|Payment} tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a4f99fb8-ad36-4454-a4ee-e0d1d3fdb14a",
+      "documentation": "Delete User Payment",
+      "method": "delete",
+      "endpoint": "users/:user_id/payments/:user_payment_id",
+      "responses": [
+        {
+          "uuid": "c25cf409-e89f-422f-89b7-f09990eeaff4",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"user_id\": \"{{ urlParam 'user_id' }}\",\n    \"payment\": {\n      \"user_payment_id\": \"{{ urlParam 'user_payment_id' }}\",\n    },\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Payment Deleted",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b7a99fad-80ce-4a4a-b55d-0e1f33f8d2c9",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki izin untuk menghapus payment user ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "78cd6814-68a8-40d4-8ae1-aad81f5aefd7",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "fcbd9330-715b-42ce-96b2-db4a247bb57d",
+          "body": "{\n  \"error\": {\n    \"message\": \"{User|Payment} tidak ditemukan\",\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "User Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c0772a36-b05e-4ff2-a269-3a4beb750cc4",
+      "documentation": "Get All Payments",
+      "method": "get",
+      "endpoint": "payments",
+      "responses": [
+        {
+          "uuid": "fa33a518-1bf5-45b5-be3b-df44acd31ceb",
+          "body": "{\n  \"error\": null,\n  \"data\": [\n    {\n      \"payment_id\": \"BCA\",\n      \"name\": \"Bank Central Asia\",\n      \"type\": \"bank\"\n    },\n    {\n      \"payment_id\": \"OVO\",\n      \"name\": \"OVO\",\n      \"type\": \"ewallet\"\n    },\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "All Payments",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "51b4959d-2ce8-428b-bc3b-54f54d91871c",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "92ee71e1-c2a1-45e0-a844-c030cec3af38",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki akses ke halaman ini.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "777f797d-5d05-4c1a-ad2b-089298b582f1",
+      "documentation": "Get Payment",
+      "method": "get",
+      "endpoint": "payments/:payment_id",
+      "responses": [
+        {
+          "uuid": "2d4a555c-fbda-44e3-b492-5f22c4d832c8",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"payment_id\": \"{{ urlParam 'payment_id' }}\",\n    \"name\": \"Bank Central Asia\",\n    \"type\": \"bank\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Get Payment",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "b7a51278-bd6f-432a-b624-254bd7c99e7e",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8b2abcf6-3587-4f1b-a58f-8e780cff0046",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki akses ke halaman ini\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "667348e3-d5b2-4944-ba84-9eae5a763081",
+          "body": "{\n  \"error\": {\n    \"message\": \"Payment tidak ditemukan.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Payment Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a0cca189-5c0e-4707-afbd-dc0e668f220c",
+      "documentation": "Create Payment",
+      "method": "post",
+      "endpoint": "payments",
+      "responses": [
+        {
+          "uuid": "26404d26-6c16-4e75-8cc1-2e52c3b2ce7e",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"payment_id\": \"BCA\",\n    \"name\": \"Bank Central Asia\",\n    \"type\": \"bank\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Payment Created",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "8ad5ec0c-9e65-484a-94ff-e33bf544e566",
+          "body": "{\n  \"error\": {\n    \"message\": \"Tidak boleh kosong\",\n    \"fields\": [\n      {\n        \"message\": \"Nama tidak boleh kosong\",\n        \"field\": \"name\"\n      },\n      {\n        \"message\": \"Jenis tidak boleh kosong\",\n        \"field\": \"type\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "payment_id",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "name",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "type",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "7dcda0ea-d694-4d36-baa8-c28c746171a1",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}\n",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "71791b64-1d04-4939-ac5e-f4976aea0704",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki akses ke halaman ini\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0a4d5723-b8ee-4179-9dc8-311a4b19843b",
+      "documentation": "Get Payment Users",
+      "method": "get",
+      "endpoint": "payments/:payment_id/users",
+      "responses": [
+        {
+          "uuid": "15e3c517-3f49-4860-9691-99c4e401ab50",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"payment_id\": \"{{ urlParam 'payment_id' }}\",\n    \"name\": \"Bank Central Asia\",\n    \"type\": \"bank\",\n    \"users\": [\n      {{# repeat (queryParam 'total' '5') }}\n      {\n        \"user_id\": \"{{ faker 'datatype.uuid' }}\",\n      }\n      {{/ repeat }}\n    ]\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Get Payment Users",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "7073cec2-b69a-415f-9f27-9e110d354c14",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "d815aba3-c23e-4cdc-9ec1-730d8ee68dfd",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki akses ke halaman ini\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3356f2ec-1a53-434c-94b9-cf7588d730e6",
+          "body": "{\n  \"error\": {\n    \"message\": \"Payment tidak ditemukan.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Payment Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "77fef451-0143-4202-9395-028732691fab",
+      "documentation": "Update Payment",
+      "method": "patch",
+      "endpoint": "payments/:payment_id",
+      "responses": [
+        {
+          "uuid": "62a3cbc2-ac2c-4b63-8d5c-858ac0a12bff",
+          "body": "{\n  \"error\": null,\n  \"data\": {\n    \"payment_id\": \"{{ urlParam 'payment_id' }}\",\n    \"name\": \"Bank Central Asia\",\n    \"type\": \"bank\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Update Payment",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1f574f84-04ea-401d-a744-82e861c02746",
+          "body": "{\n  \"error\": {\n    \"message\": \"Autentikasi gagal.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Auth Failed",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "9cc81579-abae-4ff7-bb00-245b0f7b7c2b",
+          "body": "{\n  \"error\": {\n    \"message\": \"Anda tidak memiliki akses ke halaman ini\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 403,
+          "label": "Access Denied",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Api-key",
+              "value": "apikey",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2b0d5284-a10e-4aaf-9cc6-8b2216cb6e0d",
+          "body": "{\n  \"error\": {\n    \"message\": \"Payment tidak ditemukan.\"\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Payment Not Found",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "295ae6c6-9001-4208-907d-99a62aa7bf9d",
+          "body": "{\n  \"error\": {\n    \"message\": \"Kolom tidak boleh kosong.\",\n    \"fields\": [\n      {\n        \"message\": \"Nama harus diisi.\",\n        \"field\": \"name\"\n      },\n      {\n        \"message\": \"Tipe harus dipilih.\",\n        \"field\": \"type\"\n      },\n    ]\n  },\n  \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Bad Request",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "payment_id",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "name",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            },
+            {
+              "target": "body",
+              "modifier": "type",
+              "value": "[a-zA-Z]",
+              "invert": true,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "5797960c-3ae2-48cb-b85c-c7d653c7060d"
+    },
+    {
+      "type": "folder",
+      "uuid": "bbb12186-6b5d-4c48-a87d-3b122be161a2"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
